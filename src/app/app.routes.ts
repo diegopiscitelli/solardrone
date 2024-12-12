@@ -1,8 +1,3 @@
-// import { Routes } from '@angular/router';
-
-// export const routes: Routes = [];
-
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
@@ -15,14 +10,14 @@ export const routes: Routes = [
   {
     path: 'main',
     component: MainComponent,
-    ...canActivate(() => redirectUnauthorizedTo(['/login']))
+    ...canActivate(() => redirectUnauthorizedTo(['/login'])),
   },
   { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

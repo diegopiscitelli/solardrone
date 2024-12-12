@@ -1,2 +1,14 @@
 <h1>Main</h1>
-<button (click)="onClick()">Logout</button>
+<button (click)="handleLogOutClick()">Logout</button>
+<div>name:{{ currentUser$.name }}</div>
+<div>role:{{ currentUser$.role }}</div>
+
+<div>
+  Users: @for (user of (users$ | async); track user.id) {
+  <p>{{ user.id }}</p>
+  }
+</div>
+
+@for (incident of (incidents$ | async); track incident.id) {
+<p>{{ incident.id }}</p>
+}
