@@ -12,12 +12,10 @@ import {
   addDoc,
   getDocs,
   collection,
-  collectionData,
   query,
   where,
 } from '@angular/fire/firestore';
-import { User } from '../types/interfaces';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -90,7 +88,6 @@ export class UserService {
     return signInWithPopup(this.auth, new GoogleAuthProvider()).then(
       // storage currentUser locally
       async (userResponse) => {
-        console.log(userResponse);
         const q = query(
           this._userCollection,
           where('id', '==', userResponse.user.uid)

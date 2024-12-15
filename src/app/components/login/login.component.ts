@@ -8,7 +8,6 @@ import { LogoComponent } from '../../icons/Logo.component';
   selector: 'app-login',
   imports: [ReactiveFormsModule, RouterLink, LogoComponent],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
   standalone: true,
 })
 export class LoginComponent implements OnInit {

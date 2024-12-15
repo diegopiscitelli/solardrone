@@ -8,7 +8,6 @@ import { LogoComponent } from '../../icons/Logo.component';
   selector: 'app-register',
   imports: [ReactiveFormsModule, RouterLink, LogoComponent],
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
   standalone: true,
 })
 export class RegisterComponent implements OnInit {

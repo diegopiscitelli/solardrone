@@ -8,7 +8,6 @@ import { IconStateClosedComponent } from '../../../icons/IconStateClosed.comopon
 import { IconStateOpenComponent } from '../../../icons/IconStateOpen.comoponent';
 import { IconStateSolvedComponent } from '../../../icons/IconStateSolved.comoponent';
 import { IconStateProgressComponent } from '../../../icons/IconStateProgress.comoponent';
-import { User } from '../../../types/interfaces';
 import { IncidentExpand } from '../incidents-expand/incidentExpand.component';
 
 @Component({
