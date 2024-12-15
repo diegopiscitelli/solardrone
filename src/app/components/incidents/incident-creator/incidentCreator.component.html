@@ -1,0 +1,94 @@
+<div
+  class="flex flex-col fixed w-full h-screen top-0 left-0 justify-center items-center px-10 backdrop-blur-[2px]"
+>
+  <div
+    class="flex flex-col w-4/6 rounded-lg border-blue-500 border-solid border-2 content-center shadow-lg bg-white px-10 py-5 dark:bg-gray-900"
+  >
+    <h2 class="text-3xl font-semibold text-left py-5">New task</h2>
+    <form [formGroup]="formNewIncident" class="flex flex-col gap-4 mb-5">
+      <div>
+        <label
+          for="summary"
+          class="block mb-2 text-sm font-medium text-slate-900 dark:text-slate-200"
+          >Summary</label
+        >
+        <input
+          class="bg-slate-400"
+          type="text"
+          class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Short name for your task"
+          required
+          formControlName="summary"
+        />
+      </div>
+      <div>
+        <label
+          for="description"
+          class="block mb-2 text-sm font-medium text-slate-900 dark:text-slate-200"
+          >Description</label
+        >
+        <textarea
+          class="bg-slate-400"
+          type="text"
+          class="form-control min-h-40 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Description of the incident"
+          required
+          formControlName="description"
+        >
+        </textarea>
+      </div>
+
+      <div>
+        <label
+          for="priority"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Select priority</label
+        >
+        <select
+          id="priority"
+          formControlName="priority"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+        >
+          <option selected>Choose a priority</option>
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+          <option value="critical">Critical</option>
+        </select>
+      </div>
+      <div>
+        <div class="card flex flex-col justify-center">
+          <label
+            for="priority"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Select Asiggnes</label
+          >
+          <p-multiselect
+            [options]="users"
+            formControlName="assignedTo"
+            optionLabel="name"
+            placeholder="Assigned to:"
+            [maxSelectedLabels]="3"
+            styleClass="dark-panel"
+          />
+        </div>
+      </div>
+      <div class="flex justify-between">
+        <button
+          type="submit"
+          (click)="handleFormSubmit()"
+          class="mb-3 text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm relative w-1/4 px-5 py-2.5 text-center"
+        >
+          Create Task
+        </button>
+        <button
+          (click)="this.creatorClosed.emit()"
+          class="mb-3 text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm relative w-1/4 px-5 py-2.5 text-center"
+        >
+          Close
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

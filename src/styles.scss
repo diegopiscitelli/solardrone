@@ -1,1 +1,97 @@
 /* You can add global styles to this file, and also import other style files */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900
+
+body {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  // box-shadow: inset 0 0 5px grey;
+  border-radius: 4px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(162, 162, 162);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #db8483;
+}
+
+@layer components {
+  button {
+    @apply transition-all;
+  }
+  a.active {
+    @apply border-red-500;
+  }
+  body {
+    @apply w-full;
+  }
+  /* ... */
+  .dark-panel.p-multiselect {
+    position: relative;
+    display: flex;
+    width: 100%;
+    //  border: solid 1px red;
+    @apply bg-white dark:bg-gray-800 rounded-lg ring-orange-500 border-y-slate-100;
+    .p-multiselect-label-container {
+      @apply bg-red-500 dark:bg-gray-800 text-gray-900 dark:text-white;
+    }
+    .p-multiselect-label {
+      @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-white;
+    }
+    .p-multiselect-trigger,
+    .p-multiselect-filter-container {
+      @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-white;
+    }
+    .p-multiselect-panel {
+      @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-white;
+    }
+    .p-inputtext {
+      @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-white;
+    }
+    .p-checkbox-box,
+    .p-checkbox-checked .p-checkbox-box {
+      @apply bg-white dark:bg-gray-800;
+    }
+    .p-multiselect-option {
+      @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-white;
+    }
+    .p-multiselect-option {
+      @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-white;
+    }
+    .p-multiselect-open {
+      @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-white;
+    }
+    .p-multiselect-overlay {
+      @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-white;
+    }
+    .p-multiselect-focus-border-color {
+      @apply bg-red-500;
+    }
+    .p-multiselect-option:not(.p-multiselect-option-selected):not(
+        .p-disabled
+      ).p-focus {
+      @apply bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-gray-200;
+    }
+    // background-color: aqua !important;
+  }
+}

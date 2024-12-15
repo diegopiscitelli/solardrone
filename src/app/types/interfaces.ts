@@ -1,17 +1,19 @@
 export interface User {
   id: string;
   name: string;
-  role: 'string';
+  role: string;
 }
 export interface Incidents extends IncidentsForm {
   id: string;
 }
 
 export interface IncidentsForm {
-  assignedTo: string[];
+  assignedTo: User[];
   createdAt: string;
   creatorId: string;
   name?: string;
   priority: string;
   state: string;
+  description: string;
+  summary: string;
 }

@@ -15,6 +15,7 @@ import {
 import { Observable } from 'rxjs';
 
 import { Incidents, IncidentsForm } from '../types/interfaces';
+import { User } from '@angular/fire/auth';
 
 const PATH = 'incidents';
 
@@ -30,6 +31,22 @@ export class IncidentsService {
     return collectionData(this._collection, { idField: 'id' }) as Observable<
       Incidents[]
     >;
+  }
+
+  async getIncidentByStatus(status: string) {
+    // storage currentUser locally
+    let incidents: Incidents[] = [];
+    const q = query(this._collection, where('state', '==', status));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      incidents = [...incidents, { id: doc.id, ...doc.data() } as Incidents];
+    });
+    console.log(incidents);
+    return incidents;
+  }
+
+  createIncident(user: Incidents) {
+    return addDoc(this._collection, user);
   }
 
   // async getContact(id: string) {
@@ -54,10 +71,6 @@ export class IncidentsService {
   //     contacts = [...contacts, { id: doc.id, ...doc.data() } as Contact];
   //   });
   //   return contacts;
-  // }
-
-  // createContact(user: userForm) {
-  //   return addDoc(this._collection, user);
   // }
 
   // updateContact(id: string, contact: ContactForm) {

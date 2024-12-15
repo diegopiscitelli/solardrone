@@ -17,16 +17,35 @@ import {
   where,
 } from '@angular/fire/firestore';
 import { User } from '../types/interfaces';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private auth: Auth) {}
+  constructor(private auth: Auth) {
+    this.authStatusListener();
+  }
   private _firestore = inject(Firestore);
   private _userCollection = collection(this._firestore, 'users');
   public currentUser: any = {};
+
+  private currentUserStatus: any = {};
+  private authStatusSub = new BehaviorSubject(this.currentUserStatus);
+  currentAuthStatus = this.authStatusSub.asObservable();
+
+  // Listener to know if user is or not Logged In
+  authStatusListener() {
+    this.auth.onAuthStateChanged((credential) => {
+      if (credential) {
+        this.authStatusSub.next(credential);
+        // User is logged in
+      } else {
+        this.authStatusSub.next(null);
+        // User is logged out
+      }
+    });
+  }
 
   async register({ email, password }: any) {
     const userResponse = await createUserWithEmailAndPassword(
@@ -45,15 +64,15 @@ export class UserService {
     return await addDoc(this._userCollection, user);
   }
 
-  getUsers() {
-    return collectionData(this._userCollection, {
-      idField: 'id',
-    }) as Observable<User[]>;
+  async getUsers() {
+    return (await getDocs(query(this._userCollection))).docs.map((robots) =>
+      robots.data()
+    );
   }
 
   login({ email, password }: any) {
     return signInWithEmailAndPassword(this.auth, email, password).then(
-      // set currentUser
+      // storage currentUser locally
       async (userResponse) => {
         const q = query(
           this._userCollection,
@@ -69,6 +88,7 @@ export class UserService {
 
   loginWithGoogle() {
     return signInWithPopup(this.auth, new GoogleAuthProvider()).then(
+      // storage currentUser locally
       async (userResponse) => {
         console.log(userResponse);
         const q = query(

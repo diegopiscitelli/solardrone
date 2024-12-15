@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { LogoComponent } from '../../icons/Logo.component';
 
 @Component({
   selector: 'app-register',
+  imports: [ReactiveFormsModule, RouterLink, LogoComponent],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule],
 })
 export class RegisterComponent implements OnInit {
   formReg: FormGroup;

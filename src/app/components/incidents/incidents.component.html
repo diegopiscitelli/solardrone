@@ -1,0 +1,38 @@
+<div class="flex relative flex-col w-full items-center px-10">
+  <div class="flex justify-between w-5/6">
+    <h1 class="text-3xl w-5/6 font-semibold text-left py-5">Incidents</h1>
+    <button (click)="toogleCreatorModal()">OPEN CREATOR</button>
+  </div>
+
+  <div
+    class="flex flex-col w-5/6 bg-white dark:bg-gray-800 max-h-[500px] overflow-y-auto"
+  >
+    <div
+      class="grid md:grid-cols-[300px_300px_auto_100px] sm:grid-cols-[100px_100px_auto_auto] px-2 py-2 rounded-md border-b border-gray-100 dark:border-gray-900 text-sm"
+    >
+      <span
+        class="self-center text-xs font-semibold px-5 overflow-hidden text-ellipsis text-nowrap"
+        >Description</span
+      >
+      <span
+        class="self-center text-xs font-semibold px-5 overflow-hidden text-ellipsis text-nowrap"
+        >Assigned to:</span
+      >
+      <span
+        class="self-center text-xs justify-self-center font-semibold px-5 overflow-hidden text-ellipsis text-nowrap"
+        >State</span
+      >
+      <span
+        class="self-center text-xs justify-self-center font-semibold px-5 overflow-hidden text-ellipsis text-nowrap"
+        >Priority</span
+      >
+    </div>
+
+    @for (incident of (incidents$ | async); track incident.id) {
+    <incident-small [data]="incident" />
+    }
+  </div>
+  @if(creatorIsOpen) {
+  <incident-creator (creatorClosed)="toogleCreatorModal()" />
+  }
+</div>

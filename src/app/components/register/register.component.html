@@ -1,16 +1,75 @@
-<h2>User register</h2>
-<form [formGroup]="formReg" (ngSubmit)="onSubmit()">
-  <div>
-    <label>Name</label>
-    <input type="text" class="form-control" formControlName="name" />
+<section class="flex flex-col content-center items-center">
+  <span class="my-10">
+    <app-logo [size]="200" />
+  </span>
+  <div
+    class="w-full max-w-sm bg-white dark:bg-gray-800 p-5 rounded-lg shadow-sm"
+  >
+    <h1 class="text-xl font-bold text-center mb-9">Create your account</h1>
+    <form
+      [formGroup]="formReg"
+      (ngSubmit)="onSubmit()"
+      class="flex flex-col gap-4 mb-5"
+    >
+      <div>
+        <label
+          for="name"
+          class="block mb-2 text-sm font-medium text-slate-900 dark:text-slate-200"
+          >Name</label
+        >
+        <input
+          class="bg-slate-400"
+          type="text"
+          class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Your name"
+          required
+          formControlName="name"
+        />
+      </div>
+      <div>
+        <label
+          for="email"
+          class="block mb-2 text-sm font-medium text-slate-900 dark:text-slate-200"
+          >Email</label
+        >
+        <input
+          class="bg-slate-400"
+          type="text"
+          class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="name@solardrone.com"
+          required
+          formControlName="email"
+        />
+      </div>
+      <div>
+        <label
+          for="password"
+          class="block mb-2 text-sm font-medium text-slate-900 dark:text-slate-200"
+          >Password</label
+        >
+        <input
+          type="password"
+          class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+          formControlName="password"
+        />
+      </div>
+      <!-- <input type="submit" value="Enviar" /> -->
+      <button
+        (click)="onSubmit()"
+        type="submit"
+        class="mb-3 text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm relative w-full px-5 py-2.5 text-center"
+      >
+        Sign in
+      </button>
+    </form>
+    Already have an account?
+    <a
+      class="btn text-cyan-600"
+      routerLink="/login"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      >Login here
+    </a>
   </div>
-  <div>
-    <label>Email</label>
-    <input type="text" class="form-control" formControlName="email" />
-  </div>
-  <div>
-    <label>Password</label>
-    <input type="password" class="form-control" formControlName="password" />
-  </div>
-  <input type="submit" value="Enviar" />
-</form>
+</section>
