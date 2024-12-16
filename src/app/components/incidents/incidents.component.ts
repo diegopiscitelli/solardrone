@@ -6,12 +6,18 @@ import { DarkModeService } from '../../services/darkMode.service';
 import { AsyncPipe } from '@angular/common';
 import { IncidentSmall } from './incidentSmall/incidentSmall.component';
 import { IncidentsCreatorComponent } from './incident-creator/incidentCreator.component';
+import { IconCreateComponent } from '../../icons/IconCreate.component copy';
 
 @Component({
   selector: 'app-incidents',
   templateUrl: './incidents.component.html',
   standalone: true,
-  imports: [AsyncPipe, IncidentSmall, IncidentsCreatorComponent],
+  imports: [
+    AsyncPipe,
+    IncidentSmall,
+    IncidentsCreatorComponent,
+    IconCreateComponent,
+  ],
 })
 export class IncidentsComponent {
   private _incidentsService = inject(IncidentsService);

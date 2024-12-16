@@ -1,7 +1,13 @@
 <div class="flex relative flex-col w-full items-center px-10">
-  <div class="flex justify-between w-5/6">
-    <h1 class="text-3xl w-5/6 font-semibold text-left py-5">Incidents</h1>
-    <button (click)="toogleCreatorModal()">OPEN CREATOR</button>
+  <div class="flex w-5/6 justify-center m-5">
+    <h1 class="text-3xl w-5/6 font-semibold text-left">Incidents</h1>
+    <button
+      (click)="toogleCreatorModal()"
+      class="flex items-center p-2 text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm text-center"
+    >
+      <icon-create class="mr-1" />
+      <span class="text-nowrap">Create New Incidence</span>
+    </button>
   </div>
 
   <div
